@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <meta name="theme-color" content="{% if config.extra.theme_color %}{{ config.extra.dne }}{% else %}#000{% endif %}">
+    <meta name="msapplication-navbutton-color" content="{% if config.extra.theme_color %}{{ config.extra.dne }}{% else %}#000{% endif %}">
+    <meta name="apple-mobile-web-app-status-bar-style" content="{% if config.extra.theme_color %}{{ config.extra.dne }}{% else %}#000{% endif %}">
+
+    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+
+    <!-- Favicon -->
+    {% if config.extra.favicon_href %}
+      <link href="{{ config.extra.favicon_href }}" rel="icon" type="image/x-icon" />
+    {% endif %}
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ get_url(path="main.css", trailing_slash=false) }}">
+
+    {% if config.generate_rss %}
+      <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path="rss.xml", trailing_slash=false) }}">
+    {% endif %}
+  </head>
+
+  <body>
+    {% block header %}
+      <header>
+        <div class="right">
+          <h1 class="center cursive underline">Engineering notes from the stack trenches</h1>
+        </div>
+        <br>
+        <hr>
+      </header>
+    {% endblock header %}
+
+    <div class="content container">
+      {% block content %}
+        <div class="posts">
+          {% set_global year_index = 0 %}
+          {% for page in section.pages | sort(attribute="date") | reverse %}
+            {% if loop.first or year_index != page.year %}
+              <h2>{{ page.year }}</h2>
+              {% set_global year_index = page.year %}
+            {% endif %}
+            <div class="post">
+              <h3 class="post-title">
+                <a href="{{ page.permalink }}">{{ page.title }}</a>
+              </h3>
+
+              <span class="post-date">{{ page.date | date(format="%B %d, %Y") }}</span>
+            </div>
+          {% endfor %}
+        </div>
+      {% endblock content %}
+    </div>
+
+    {% block footer %}
+      <footer class="center">
+        <hr>
+        <small>
+          <ul>
+            <li>
+              <a href="/">Home</a>
+            </li>
+            {% if config.extra.github_link %}
+              <li>
+                <a href="{{ config.extra.github_link }}">Github</a>
+              </li>
+            {% endif %}
+            {% if config.generate_rss %}
+              <li>
+                <a href="/rss.xml">RSS</a>
+              </li>
+            {% endif %}
+            {% if config.extra.about_link %}
+              <li>
+                <a href="{{ config.extra.about_link }}" target="_blank">About</a>
+              </li>
+            {% endif %}
+          </ul>
+        </small>
+
+        {% if config.extra.gravatar_img_src and config.extra.gravatar_href %}
+          <a href="{{ config.extra.gravatar_href }}" class="normal">
+            <img class="center-img" src="{{ config.extra.gravatar_img_src }}">
+          </a>
+        {% endif %}
+
+        <br><br>
+      </footer>
+    {% endblock footer %}
+  </body>
+</html>

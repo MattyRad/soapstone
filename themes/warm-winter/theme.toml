@@ -1,0 +1,16 @@
+name = "Imperial Winter"
+description = "A bare bones theme with some color tweakability"
+license = "MIT"
+
+homepage = "https://github.com"
+
+min_version = "0.4.0"
+
+# An optional live demo URL
+demo = ""
+
+[extra]
+
+[author]
+name = "Matt Radford"
+homepage = "https://mradford.com"
