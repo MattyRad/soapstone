@@ -1,6 +1,6 @@
 # Warm Winter
 
-A dark theme for zola
+A dark theme for zola. [See it in action](https://mattyrad.github.io/zola-warm-winter/).
 
 ![sample](/sample.png)
 
