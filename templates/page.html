@@ -21,5 +21,21 @@
     <br>
 
     {{ page.content | safe }}
+
+    {% if config.extra.signature_img_src or config.extra.signature_text %}
+      <div class="right sig">
+        {% if (config.extra.signature_img_src) %}
+          <img src="{{ config.extra.signature_img_src }}">
+        {% endif %}
+        {% if (config.extra.signature_text) %}
+          <p>
+            <small>
+              <i>{{ config.extra.signature_text }}</i>
+            </small>
+          </p>
+        {% endif %}
+      </div>
+    {% endif %}
+
   </div>
 {% endblock content %}

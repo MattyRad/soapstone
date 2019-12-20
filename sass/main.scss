@@ -274,6 +274,20 @@ img {
   max-width: 100%;
 }
 
+.sig {
+  display: block;
+  clear: left;
+  color: $color-greyfour;
+}
+
+.sig img {
+  float: right;
+}
+
+.sig p {
+  clear: both;
+}
+
 /* Tables */
 table {
   margin-bottom: 1rem;
