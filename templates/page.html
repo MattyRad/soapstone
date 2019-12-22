@@ -15,7 +15,19 @@
 
 {% block content %}
   <div class="post">
-    <span class="post-date right">{{ page.date | date(format="%B %d, %Y") }}</span>
+    <span class="post-date right">
+      {% if page.extra.updated_date %}
+        Published on
+      {% endif %}
+
+      {{ page.date | date(format="%B %d, %Y") }}
+
+      {% if page.extra.updated_date %}
+        <span class="post-date right">
+          <small>Updated on {{ page.extra.updated_date | date(format="%B %d, %Y") }}</small>
+        </span>
+      {% endif %}
+    </span>
     <h1 class="post-title">{{ page.title }}</h1>
 
     <br>
