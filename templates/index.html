@@ -30,7 +30,7 @@
     {% block header %}
       <header>
         <div class="right">
-          <h1 class="center cursive underline">Engineering notes from the stack trenches</h1>
+          <h1 class="center cursive">{% if config.extra.list_header %}{{ config.extra.list_header }}{% endif %}</h1>
         </div>
         <br>
         <hr>

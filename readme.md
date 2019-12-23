@@ -8,6 +8,7 @@ A dark theme for zola. [See it in action](https://mattyrad.github.io/zola-warm-w
 
 ```toml
 [extra]
+list_header = "Hello World"
 favicon_href = "http://example.com"
 gravatar_img_src = "https://0.gravatar.com/avatar/abc123?s=60"
 gravatar_href = "https://example.com"
