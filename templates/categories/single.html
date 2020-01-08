@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+
+{% block title %}{{ 'todo' }} - {{ config.title }}{% endblock title %}
+
+{% block header %}
+  <header>
+    <div class="right">
+      <small>
+        <a href="/">Posts</a>
+      </small>
+    </div>
+    <hr>
+  </header>
+{% endblock header %}
+
+{% block content %}
+  <h1>{{ term.name | capitalize }}</h1>
+  {% for page in term.pages | sort(attribute="date") | reverse %}
+    <li>
+      {% if page.date %}
+        {{ page.date | date(format="%B %d, %Y") }} -
+      {% endif %}
+      <a href="{{ page.permalink }}">{{ page.title }}</a>
+    </li>
+  {% endfor %}
+{% endblock content %}

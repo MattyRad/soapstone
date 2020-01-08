@@ -55,6 +55,12 @@
             </div>
           {% endfor %}
         </div>
+        {#
+          {% set categories = get_taxonomy(kind="categories") %}
+          {% for term in categories.items %}
+            {{ term.name }}
+          {% endfor %}
+        #}
       {% endblock content %}
     </div>
 

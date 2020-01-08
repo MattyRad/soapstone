@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+
+{% block title %}{{ 'todo' }} - {{ config.title }}{% endblock title %}
+
+{% block header %}
+  <header>
+    <div class="right">
+      <small>
+        <a href="/">Posts</a>
+      </small>
+    </div>
+    <hr>
+  </header>
+{% endblock header %}
+
+{% block content %}
+  <h1>{{ taxonomy.name | capitalize }}</h1>
+  <ul>
+    {% for page in terms %}
+      <li><a href="{{ page.permalink }}">{{ page.name | capitalize }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock content %}
