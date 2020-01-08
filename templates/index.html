@@ -24,6 +24,17 @@
     {% if config.generate_rss %}
       <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path="rss.xml", trailing_slash=false) }}">
     {% endif %}
+
+    {% if config.extra.ga_code %}
+      <script async src="https://www.googletagmanager.com/gtag/js?id={{ config.extra.ga_code }}"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{{ config.extra.ga_code }}');
+      </script>
+    {% endif %}
   </head>
 
   <body>
