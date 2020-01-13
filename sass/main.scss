@@ -14,6 +14,9 @@ $color-monokai-teal: #66D9EF;
 $color-monokai-green: #A6E22E;
 $color-monokai-orange: #FD971F;
 
+$color-sorta-black: #1c1c1c;
+$color-black: #000;
+
 $color-monokai-main-bg: #272822;
 $color-monokai-sidebar: #181915;
 
@@ -26,7 +29,7 @@ $color-greytwo: #b4b4b4;
 $color-greythree: #8b8b8b;
 $color-greyfour: #616161;
 
-$bg-color: $color-monokai-main-bg;
+$bg-color: $color-sorta-black;
 $link-color: $color-orange-basic;
 $link-hover-color: $color-orange-lighter;
 $transition-duration: 0.3s;
@@ -59,7 +62,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: $color-monokai-sidebar;
+  background-color: $color-black;
 }
 
 html {
@@ -453,7 +456,7 @@ tbody tr:nth-child(odd) th {
 
 header {
   font-family: $font-inconsolata;
-  background-color: $color-monokai-sidebar;
+  background-color: $color-black;
 }
 
 header div {
@@ -467,7 +470,7 @@ header div {
 
 footer {
   font-family: $font-inconsolata;
-  background-color: $color-monokai-sidebar;
+  background-color: $color-black;
 }
 
 footer ul li {
