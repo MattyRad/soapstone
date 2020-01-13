@@ -7,9 +7,11 @@
     <!-- Enable responsiveness on mobile devices-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-    <meta name="theme-color" content="{% if config.extra.theme_color %}{{ config.extra.dne }}{% else %}#000{% endif %}">
-    <meta name="msapplication-navbutton-color" content="{% if config.extra.theme_color %}{{ config.extra.dne }}{% else %}#000{% endif %}">
-    <meta name="apple-mobile-web-app-status-bar-style" content="{% if config.extra.theme_color %}{{ config.extra.dne }}{% else %}#000{% endif %}">
+    {% if config.extra.theme_color %}
+      <meta name="theme-color" content="{{ config.extra.theme_color }}">
+      <meta name="msapplication-navbutton-color" content="{{ config.extra.theme_color }}">
+      <meta name="apple-mobile-web-app-status-bar-style" content="{{ config.extra.theme_color }}">
+    {% endif %}
 
     <title>{% block title %}{{ config.title }}{% endblock title %}</title>
 

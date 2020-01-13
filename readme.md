@@ -17,4 +17,5 @@ about_link = "https://example.com"
 signature_img_src = "/example.png"
 signature_text = "Signing off!"
 ga_code = "UA-1234"
+theme_color = "#000" (for meta browser theme only)
 ```
