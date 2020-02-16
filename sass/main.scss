@@ -156,7 +156,8 @@ a:before {
   -webkit-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
 }
-a:hover:before, a:active:before {
+/*a:hover:before, a:focus:before, a:active:before {*/
+a:hover:before {
   right: 0;
 }
 /* NO - Underline From Left */
