@@ -125,8 +125,7 @@ a {
   color: $link-color;
   text-decoration: none;
 }
-a:hover,
-a:focus {
+a:hover {
   color: $link-hover-color;
   /*text-decoration: underline;*/
 }
@@ -139,6 +138,7 @@ a {
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
   position: relative;
   overflow: hidden;
+  outline: none;
 }
 a:before {
   content: "";
