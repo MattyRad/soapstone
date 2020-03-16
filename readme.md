@@ -1,6 +1,6 @@
-# Warm Winter
+# Soapstone
 
-A dark theme for zola. [See it in action](https://mattyrad.github.io/zola-warm-winter/).
+A dark theme for zola. [See it in action](https://mattyrad.github.io/soapstone/).
 
 ![sample](/sample.png)
 

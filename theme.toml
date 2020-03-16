@@ -1,13 +1,13 @@
-name = "Warm Winter"
+name = "Soapstone"
 description = "A bare bones dark theme with some color tweakability"
 license = "MIT"
 
-homepage = "https://github.com/MattyRad/zola-warm-winter"
+homepage = "https://github.com/MattyRad/soapstone"
 
 min_version = "0.4.0"
 
 # An optional live demo URL
-demo = "https://mattyrad.github.io/zola-warm-winter/"
+demo = "https://mattyrad.github.io/soapstone/"
 
 [extra]
 
