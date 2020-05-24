@@ -67,24 +67,22 @@
       </header>
     {% endblock header %}
 
-    <div class="container">
+    <main>
       {% block content %}
-        <main>
-          {% set_global year_index = 0 %}
-          {% for page in section.pages | sort(attribute="date") | reverse %}
-            {% if loop.first or year_index != page.year %}
-              <h2>{{ page.year }}</h2>
-              {% set_global year_index = page.year %}
-            {% endif %}
-            <div class="post">
-              <h3 class="post-title">
-                <a href="{{ page.permalink }}">{{ page.title }}</a>
-              </h3>
+        {% set_global year_index = 0 %}
+        {% for page in section.pages | sort(attribute="date") | reverse %}
+          {% if loop.first or year_index != page.year %}
+            <h2>{{ page.year }}</h2>
+            {% set_global year_index = page.year %}
+          {% endif %}
+          <div class="post">
+            <h3 class="post-title">
+              <a href="{{ page.permalink }}">{{ page.title }}</a>
+            </h3>
 
-              <time>{{ page.date | date(format="%B %d, %Y") }}</time>
-            </div>
-          {% endfor %}
-        </main>
+            <time>{{ page.date | date(format="%B %d, %Y") }}</time>
+          </div>
+        {% endfor %}
         {#
           {% set categories = get_taxonomy(kind="categories") %}
           {% for term in categories.items %}
@@ -92,7 +90,7 @@
           {% endfor %}
         #}
       {% endblock content %}
-    </div>
+    </main>
 
     {% block footer %}
       <footer>
