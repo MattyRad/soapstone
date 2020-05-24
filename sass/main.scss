@@ -1,8 +1,15 @@
+
+$color-white: #fff;
+$color-greyone: #dedede;
+$color-greytwo: #b4b4b4;
+$color-greythree: #8b8b8b;
+$color-greyfour: #616161;
+
 body {
   background-color: #1c1c1c;
   font-family: "Karla", "Helvetica", "Arial", sans-serif;
   margin: 0 auto;
-  color: #dedede;
+  color: $color-greytwo;
   font-size: 1.1em;
   line-height: 1.5;
 }
@@ -18,11 +25,50 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  margin: 0;
   font-family: "Sharetech", Monaco, monospace;
+}
+
+h1 {
+  color: $color-white;
+  font-size: 2em;
+}
+
+h2 {
+  color: $color-white;
+  font-size: 1.5em;
+}
+
+h3 {
+  color: $color-greyone;
+  font-size: 1.4em;
+}
+
+h4 {
+  color: $color-greyone;
+  font-size: 1.3em;
+}
+
+h5 {
+  color: $color-greyone;
+  font-size: 1.2em;
+}
+
+h6 {
+  color: $color-greyone;
+  font-size: 1.1em;
+}
+
+time {
+  color: $color-greyfour;
 }
 
 header {
   background-color: #000;
+}
+
+header h1 {
+  text-align: center;
 }
 
 footer {
@@ -72,7 +118,7 @@ pre code {
 }
 
 a {
-  /*display: inline-block;*/
+  display: inline-block;
   text-decoration: none;
   color: #d28445;
   position: relative;
