@@ -6,21 +6,27 @@ $color-greyfour: #616161;
 
 $main-width: 38rem;
 
+body {
+  background-color: #000;
+  font-family: "Lora", "Helvetica", "Arial", sans-serif;
+  margin: 0 auto;
+  color: $color-greytwo;
+  font-size: 1.1em;
+  line-height: 1.5;
+}
+
+p {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0;
+}
+
 hr {
   padding: 0;
   margin: 0;
   border: 0;
   height: 1px;
   background-image: linear-gradient(to right, rgba(111, 111, 111, 0), rgba(111, 111, 111, 0.75), rgba(111, 111, 111, 0));
-}
-
-body {
-  background-color: #000;
-  font-family: "Karla", "Helvetica", "Arial", sans-serif;
-  margin: 0 auto;
-  color: $color-greytwo;
-  font-size: 1.1em;
-  line-height: 1.5;
 }
 
 main {
@@ -70,16 +76,7 @@ h6 {
 
 time {
   color: $color-greyfour;
-}
-
-header h1 {
-  text-align: center;
-}
-
-header nav {
-  max-width: $main-width;
-  margin: 0 auto;
-  text-align: right;
+  font-size: 14px;
 }
 
 time {
@@ -91,6 +88,20 @@ img {
   margin: auto;
   border-radius: 5px;
   max-width: 100%;
+}
+
+header {
+  font-family: "Lucida Console", Monaco, monospace;
+}
+
+header h1 {
+  text-align: center;
+}
+
+header nav {
+  max-width: $main-width;
+  margin: 0 auto;
+  text-align: right;
 }
 
 footer {
@@ -105,6 +116,21 @@ footer ul li {
 
 footer ul li:before {
   content: '';
+}
+
+footer {
+  font-family: "Lucida Console", Monaco, monospace;
+}
+
+article aside small {
+  color: $color-greyfour;
+  float: right;
+}
+
+article aside img {
+  /*display: block;
+  clear: left;
+  clear: both;*/
 }
 
 /**
@@ -159,8 +185,8 @@ a:after {
   /*margin-top: 5px;*/
   right: 0;
   background: #f4bf75;
-  transition: width .2s ease;
-  -webkit-transition: width .2s ease;
+  transition: width .3s ease;
+  -webkit-transition: width .3s ease;
 }
 a:hover:after {
   width: 100%;

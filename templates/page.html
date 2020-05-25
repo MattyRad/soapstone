@@ -30,12 +30,14 @@
     {{ page.content | safe }}
 
     {% if config.extra.signature_img_src or config.extra.signature_text %}
+      <aside>
         {% if (config.extra.signature_img_src) %}
           <img src="{{ config.extra.signature_img_src }}">
         {% endif %}
         {% if (config.extra.signature_text) %}
-          {{ config.extra.signature_text }}
+          <small>{{ config.extra.signature_text }}</small>
         {% endif %}
+      </aside>
     {% endif %}
   </article>
 {% endblock content %}
