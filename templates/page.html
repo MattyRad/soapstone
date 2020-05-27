@@ -3,51 +3,40 @@
 {% block title %}{{ page.title }} - {{ config.title }}{% endblock title %}
 
 {% block header %}
-  <header>
-    <div class="right">
-      <small>
-        <a href="/">Posts</a>
-      </small>
-    </div>
-    <hr>
-  </header>
+  <nav>
+    <a href="/">Posts</a>
+  </nav>
+  <hr>
 {% endblock header %}
 
 {% block content %}
-  <div class="post">
-    <span class="post-date right">
+  <article>
+    <header>
+      <h1>{{ page.title }}</h1>
+
+      <time>
+        {% if page.extra.updated_date %}
+          Published on
+        {% endif %}
+        {{ page.date | date(format="%B %d, %Y") }}
+      </time>
+
       {% if page.extra.updated_date %}
-        Published on
+        <time>Updated on {{ page.extra.updated_date | date(format="%B %d, %Y") }}</time>
       {% endif %}
-
-      {{ page.date | date(format="%B %d, %Y") }}
-
-      {% if page.extra.updated_date %}
-        <span class="post-date right">
-          <small>Updated on {{ page.extra.updated_date | date(format="%B %d, %Y") }}</small>
-        </span>
-      {% endif %}
-    </span>
-    <h1 class="post-title">{{ page.title }}</h1>
-
-    <br>
+    </header>
 
     {{ page.content | safe }}
 
     {% if config.extra.signature_img_src or config.extra.signature_text %}
-      <div class="right sig">
+      <aside>
         {% if (config.extra.signature_img_src) %}
           <img src="{{ config.extra.signature_img_src }}">
         {% endif %}
         {% if (config.extra.signature_text) %}
-          <p>
-            <small>
-              <i>{{ config.extra.signature_text }}</i>
-            </small>
-          </p>
+          <small>{{ config.extra.signature_text }}</small>
         {% endif %}
-      </div>
+      </aside>
     {% endif %}
-
-  </div>
+  </article>
 {% endblock content %}

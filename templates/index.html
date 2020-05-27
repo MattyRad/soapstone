@@ -3,8 +3,6 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-    <!-- Enable responsiveness on mobile devices-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
     {% if config.extra.theme_color %}
@@ -20,8 +18,28 @@
       <link href="{{ config.extra.favicon_href }}" rel="icon" type="image/x-icon" />
     {% endif %}
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="{{ get_url(path="main.css", trailing_slash=false) }}">
+    <!-- Normalize -->
+    <style>
+      /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+      html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}
+    </style>
+
+    <style>
+      @font-face {
+        font-family: 'Lora';
+        src: url(data:font/truetype;charset=utf-8;base64,{{ load_data(path="themes/soapstone/fonts/lora/encoded/regular") | safe }}) format('truetype');
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: 'cabin';
+        src: url(data:font/truetype;charset=utf-8;base64,{{ load_data(path="themes/soapstone/fonts/cabin/encoded/regular") | safe }}) format('truetype');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+    <style>{{ load_data(path="public/main.css") | safe }}</style>
 
     {% if config.generate_rss %}
       <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path="rss.xml", trailing_slash=false) }}">
@@ -41,44 +59,42 @@
 
   <body>
     {% block header %}
-      <header>
-        <div class="right">
-          <h1 class="center cursive">{% if config.extra.list_header %}{{ config.extra.list_header }}{% endif %}</h1>
-        </div>
-        <br>
-        <hr>
-      </header>
+      <nav>
+        {% if config.extra.list_header %}
+          <h1>{{ config.extra.list_header }}</h1>
+        {% endif %}
+      </nav>
+      <hr>
     {% endblock header %}
 
-    <div class="content container">
-      {% block content %}
-        <div class="posts">
+    <main>
+      <br>
+      <section>
+        {% block content %}
           {% set_global year_index = 0 %}
           {% for page in section.pages | sort(attribute="date") | reverse %}
             {% if loop.first or year_index != page.year %}
               <h2>{{ page.year }}</h2>
               {% set_global year_index = page.year %}
             {% endif %}
-            <div class="post">
-              <h3 class="post-title">
-                <a href="{{ page.permalink }}">{{ page.title }}</a>
-              </h3>
+            <h3>
+              <a href="{{ page.permalink }}">{{ page.title }}</a>
+            </h3>
 
-              <span class="post-date">{{ page.date | date(format="%B %d, %Y") }}</span>
-            </div>
+            <time>{{ page.date | date(format="%B %d, %Y") }}</time>
           {% endfor %}
-        </div>
-        {#
-          {% set categories = get_taxonomy(kind="categories") %}
-          {% for term in categories.items %}
-            {{ term.name }}
-          {% endfor %}
-        #}
-      {% endblock content %}
-    </div>
+          {#
+            {% set categories = get_taxonomy(kind="categories") %}
+            {% for term in categories.items %}
+              {{ term.name }}
+            {% endfor %}
+          #}
+        {% endblock content %}
+      </section>
+    </main>
 
     {% block footer %}
-      <footer class="center">
+      <footer>
         <hr>
         <small>
           <ul>
