@@ -1,6 +1,6 @@
 # Soapstone
 
-A dark theme for zola. [See it in action](https://mattyrad.github.io/soapstone/).
+A divless dark theme for zola. [See it in action](https://mattyrad.github.io/soapstone/).
 
 ![sample](/sample.png)
 
