@@ -33,6 +33,11 @@ main {
   background-color: #1c1c1c;
 }
 
+header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
 main section {
   max-width: $main-width;
   margin-left:  auto;
@@ -42,36 +47,42 @@ main section {
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-family: "Cabin", Monaco, monospace;
+  line-height: 1.1;
 }
 
 h1 {
   color: $color-white;
-  font-size: 1.85em;
+  font-size: 1.85rem;
 }
 
 h2 {
   color: $color-white;
-  font-size: 1.5em;
+  font-size: 1.5rem;
+  padding-top: 1rem;
 }
 
 h3 {
   color: $color-greyone;
-  font-size: 1.4em;
+  font-size: 1.4rem;
+  padding-top: 1rem;
 }
 
 h4 {
   color: $color-greyone;
-  font-size: 1.3em;
+  font-size: 1.3rem;
+  padding-top: 1rem;
 }
 
 h5 {
   color: $color-greyone;
-  font-size: 1.2em;
+  font-size: 1.2rem;
+  padding-top: 0.5rem;
 }
 
 h6 {
   color: $color-greyone;
-  font-size: 1.1em;
+  font-size: 1.1rem;
+  padding-top: 0.5rem;
 }
 
 time {
@@ -105,8 +116,9 @@ nav h1 {
 
 /* Quotes */
 blockquote {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-style: italic;
+  line-height: 1.1;
   font-family: "Lucida Console", Monaco, monospace;
   padding: .5rem 1rem;
   margin: .8rem 0;
@@ -142,6 +154,12 @@ footer ul li:before {
 
 footer {
   font-family: "Lucida Console", Monaco, monospace;
+}
+
+section {
+  padding-bottom: 20px;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 article aside {

@@ -11,19 +11,20 @@
 
 {% block content %}
   <article>
+    <header>
+      <h1>{{ page.title }}</h1>
 
-    <h1>{{ page.title }}</h1>
+      <time>
+        {% if page.extra.updated_date %}
+          Published on
+        {% endif %}
+        {{ page.date | date(format="%B %d, %Y") }}
+      </time>
 
-    <time>
       {% if page.extra.updated_date %}
-        Published on
+        <time>Updated on {{ page.extra.updated_date | date(format="%B %d, %Y") }}</time>
       {% endif %}
-      {{ page.date | date(format="%B %d, %Y") }}
-    </time>
-
-    {% if page.extra.updated_date %}
-      <time>Updated on {{ page.extra.updated_date | date(format="%B %d, %Y") }}</time>
-    {% endif %}
+    </header>
 
     {{ page.content | safe }}
 
