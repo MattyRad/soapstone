@@ -90,20 +90,17 @@ img {
   max-width: 100%;
 }
 
-header {
+nav {
   font-family: "Lucida Console", Monaco, monospace;
-}
-
-header h1 {
-  text-align: center;
-}
-
-header nav {
   max-width: $main-width;
   margin: 0 auto;
   text-align: right;
   font-size: 0.8em;
   padding: 10px;
+}
+
+nav h1 {
+  text-align: center;
 }
 
 /* Quotes */

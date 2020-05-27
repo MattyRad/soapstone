@@ -59,12 +59,12 @@
 
   <body>
     {% block header %}
-      <header>
+      <nav>
         {% if config.extra.list_header %}
           <h1>{{ config.extra.list_header }}</h1>
         {% endif %}
-        <hr>
-      </header>
+      </nav>
+      <hr>
     {% endblock header %}
 
     <main>
