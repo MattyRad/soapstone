@@ -13,6 +13,9 @@
 
 {% block content %}
   <article>
+
+    <h1>{{ page.title }}</h1>
+
     <time>
       {% if page.extra.updated_date %}
         Published on
@@ -21,11 +24,8 @@
     </time>
 
     {% if page.extra.updated_date %}
-      <br>
       <time>Updated on {{ page.extra.updated_date | date(format="%B %d, %Y") }}</time>
     {% endif %}
-
-    <h1>{{ page.title }}</h1>
 
     {{ page.content | safe }}
 

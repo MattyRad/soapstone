@@ -41,12 +41,12 @@ main section {
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
-  font-family: "Sharetech", Monaco, monospace;
+  font-family: "Cabin", Monaco, monospace;
 }
 
 h1 {
   color: $color-white;
-  font-size: 2em;
+  font-size: 1.85em;
 }
 
 h2 {
@@ -102,6 +102,31 @@ header nav {
   max-width: $main-width;
   margin: 0 auto;
   text-align: right;
+  font-size: 0.8em;
+  padding: 10px;
+}
+
+/* Quotes */
+blockquote {
+  font-size: 0.85rem;
+  font-style: italic;
+  font-family: "Lucida Console", Monaco, monospace;
+  padding: .5rem 1rem;
+  margin: .8rem 0;
+  color: $color-greyfour;
+  border-left: .25rem solid $color-greyfour;
+}
+blockquote strong {
+  color: $color-greythree;
+}
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+@media (min-width: 30em) {
+  blockquote {
+    padding-right: 5rem;
+    padding-left: 1.25rem;
+  }
 }
 
 footer {
@@ -122,15 +147,20 @@ footer {
   font-family: "Lucida Console", Monaco, monospace;
 }
 
-article aside small {
+article aside {
+  font-family: "Lucida Console", Monaco, monospace;
+  font-style: italic;
   color: $color-greyfour;
-  float: right;
+
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  align-content: end;
 }
 
 article aside img {
-  /*display: block;
-  clear: left;
-  clear: both;*/
+  margin: 0;
+  padding: 10px;
 }
 
 /**
@@ -141,6 +171,7 @@ code {
   color: #e94e4e;
   background-color: #151515;
   border-radius: 3px;
+  font-size: 80%;
 }
 pre {
   border-radius: 10px;
