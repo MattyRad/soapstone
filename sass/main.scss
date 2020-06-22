@@ -164,19 +164,31 @@ footer {
 }
 
 article aside {
-  font-family: "Lucida Console", Monaco, monospace;
-  font-style: italic;
-  color: $color-greyfour;
-
+  min-width: 100%;
   display: flex;
+  -webkit-display: flex;
+  -moz-display: flex;
   flex-direction: column;
-  align-items: end;
-  align-content: end;
+  align-items: flex-end;
+  align-content: flex-end;
 }
 
-article aside img {
+article aside figure {
+  display: flex;
+  -webkit-display: flex;
+  -moz-display: flex;
   margin: 0;
-  padding: 10px;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+article aside figure figcaption {
+  font-family: "Lucida Console", Monaco, monospace;
+  font-style: italic;
+  font-size: 80%;
+  color: $color-greyfour;
+  padding-top: 10px;
 }
 
 /**

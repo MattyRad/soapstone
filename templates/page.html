@@ -30,12 +30,14 @@
 
     {% if config.extra.signature_img_src or config.extra.signature_text %}
       <aside>
-        {% if (config.extra.signature_img_src) %}
-          <img src="{{ config.extra.signature_img_src }}">
-        {% endif %}
-        {% if (config.extra.signature_text) %}
-          <small>{{ config.extra.signature_text }}</small>
-        {% endif %}
+        <figure>
+          {% if (config.extra.signature_img_src) %}
+            <img src="{{ config.extra.signature_img_src }}">
+            {% if (config.extra.signature_text) %}
+              <figcaption>{{ config.extra.signature_text }}</figcaption>
+            {% endif %}
+          {% endif %}
+        </figure>
       </aside>
     {% endif %}
   </article>
