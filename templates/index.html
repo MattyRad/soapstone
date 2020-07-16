@@ -26,6 +26,13 @@
 
     <style>
       @font-face {
+        font-family: 'Lora';
+        src: url(data:font/truetype;charset=utf-8;base64,{{ load_data(path="themes/soapstone/fonts/lora/encoded/regular") | safe }}) format('truetype');
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
         font-family: 'cabin';
         src: url(data:font/truetype;charset=utf-8;base64,{{ load_data(path="themes/soapstone/fonts/cabin/encoded/regular") | safe }}) format('truetype');
         font-weight: normal;
