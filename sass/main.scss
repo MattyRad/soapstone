@@ -13,6 +13,12 @@ body {
   margin: 0 auto;
   color: $color-greyone;
   text-rendering: optimizeLegibility;
+  /* not sure if these below help, feel free to remove */
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: normal;
+  font-stretch: 100%;
+  vertical-align: baseline;
 }
 
 @media (min-width: 801px) {
@@ -24,7 +30,7 @@ body {
 @media (max-width: 800px) {
   body {
     font-size: 18px;
-    line-height: 1.2em;
+    line-height: 1.3em;
   }
 }
 
