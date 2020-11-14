@@ -1,22 +1,37 @@
 +++
 date = 2018-12-07T14:07:34-08:00
-title = "ASD"
+title = "Sample title"
 tags = ["error logs", "logging", "syntax highlighting"]
 
 #[taxonomies]
 #categories = ["tips"]
 +++
 
-# Headers
-
 # H1
+
+Lorem ipsum...
+
 ## H2
+
+dolor sit amet...
+
 ### H3
+
+consectetur adipiscing elit...
+
 #### H4
+
+sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
+
 ##### H5
+
+Ut enim ad minim veniam...
+
 ###### H6
 
-# Emphasis
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
+
+## Emphasis
 
 Emphasis, aka italics, with *asterisks* or _underscores_.
 
@@ -24,7 +39,7 @@ Strong emphasis, aka bold, with **asterisks** or __underscores__.
 
 Combined emphasis with **asterisks and _underscores_**.
 
-# Lists
+## Lists
 
 1. First ordered list item
 2. Another item
@@ -40,7 +55,7 @@ Combined emphasis with **asterisks and _underscores_**.
     * Subitem1
     * Subitem2
 
-# Links
+## Links
 
 [I'm an inline-style link](https://www.google.com)
 
@@ -50,10 +65,10 @@ Combined emphasis with **asterisks and _underscores_**.
 
 URLs and URLs in angle brackets will automatically get turned into links. <http://www.example.com>
 
-Inline-style: 
+Inline-style:
 ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
 
-# Code
+## Code
 
 Inline `code` has `back-ticks around` it.
 
@@ -61,18 +76,18 @@ Inline `code` has `back-ticks around` it.
 var s = "JavaScript syntax highlighting";
 alert(s);
 ```
- 
+
 ```python
 s = "Python syntax highlighting"
 print s
 ```
- 
+
 ```
-No language indicated, so no syntax highlighting. 
+No language indicated, so no syntax highlighting.
 But let's throw in a <b>tag</b>.
 ```
 
-# Tables
+## Tables
 
 Colons can be used to align columns.
 
@@ -83,7 +98,7 @@ Colons can be used to align columns.
 | zebra stripes | are neat      |    $1 |
 
 There must be at least 3 dashes separating each header cell.
-The outer pipes (|) are optional, and you don't need to make the 
+The outer pipes (|) are optional, and you don't need to make the
 raw Markdown line up prettily. You can also use inline Markdown.
 
 Markdown | Less | Pretty
@@ -91,7 +106,7 @@ Markdown | Less | Pretty
 *Still* | `renders` | **nicely**
 1 | 2 | 3
 
-# Blockquotes
+## Blockquotes
 
 > Blockquotes are very handy in email to emulate reply text.
 > This line is part of the same quote.
@@ -100,12 +115,8 @@ Quote break.
 
 > This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote.
 
-# Horizontal Rules
+## Horizontal Rule
 
-Hyphens
-
----
-
-Asterisks
-
+Lorem ipsum...
 ***
+dolor sit amet...
