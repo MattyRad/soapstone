@@ -2,7 +2,7 @@
 
 A divless dark theme for zola. [See it in action](https://mattyrad.github.io/soapstone/).
 
-![sample](/sample.png)
+![sample](/screenshot.png)
 
 ## Extra config
 
