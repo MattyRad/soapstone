@@ -4,7 +4,11 @@ A divless dark theme for zola. [See it in action](https://mattyrad.github.io/soa
 
 ![sample](/screenshot.png)
 
+See [installation](https://www.getzola.org/documentation/themes/installing-and-using-themes/) for installation directions.
+
 ## Extra config
+
+The following config is optional, but can add a few niceties.
 
 ```toml
 [extra]
