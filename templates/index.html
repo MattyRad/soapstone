@@ -56,16 +56,59 @@
       <section>
         {% block content %}
           {% set_global year_index = 0 %}
-          {% for page in section.pages | sort(attribute="date") | reverse %}
+          {% set_global pages = [] %}
+          {% set main = get_section(path="_index.md") %}
+
+          {% for subsection in main.subsections %}
+            {% set subsection = get_section(path=subsection) %}
+            {% if subsection.pages %}
+              {% for page in subsection.pages %}
+                {% set_global pages = pages | concat(with=page) %}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+
+          {% for page in pages | sort(attribute="date") | reverse %}
             {% if loop.first or year_index != page.year %}
               <h2>{{ page.year }}</h2>
               {% set_global year_index = page.year %}
             {% endif %}
-            <h3>
-              <a href="{{ page.permalink }}">{{ page.title }}</a>
-            </h3>
 
-            <time>{{ page.date | date(format="%B %d, %Y") }}</time>
+
+            {% set_global categories = [] %}
+            {% if page.taxonomies %}
+              {% for taxonomy_type, taxonomy in page.taxonomies %}
+                  {% for taxonomy_name in taxonomy %}
+                    {% set_global categories = categories | concat(with=taxonomy_name) %}
+                  {% endfor %}
+              {% endfor %}
+            {% endif %}
+
+            {% if categories is containing("projects") %}
+              {% set gravity = 2 %}
+            {% elif categories is containing("guides") %}
+              {% set gravity = 4 %}
+            {% elif categories is containing("tips") %}
+              {% set gravity = 6 %}
+            {% else %}
+              {% set gravity = 3 %}
+            {% endif %}
+
+            <h{{ gravity | safe }} class="{% if page.taxonomies %}{% for i, taxonomy in page.taxonomies %}{% for taxonomy_name in taxonomy %}tx-{{ taxonomy_name }}{% endfor %}{% endfor %}{% endif %}">
+              <a href="{{ page.path }}">{{ page.title }}</a>
+            </h{{ gravity | safe }}>
+            <footer>
+              <small>
+                <time>{{ page.date | date(format="%B %d, %Y") }}</time>
+                {% if page.taxonomies %}
+                  {% for taxonomy_type, taxonomy in page.taxonomies %}
+                      {% for taxonomy_name in taxonomy %}
+                        <a class="normal tx-{{ taxonomy_name }}" style="text-decoration: underline;" href="/categories/{{ taxonomy_name }}">{{ taxonomy_name }}</a>
+                      {% endfor %}
+                  {% endfor %}
+                {% endif %}
+              </small>
+            </footer>
           {% endfor %}
           {#
             {% set categories = get_taxonomy(kind="categories") %}

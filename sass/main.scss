@@ -133,10 +133,6 @@ time {
   font-size: 14px;
 }
 
-time {
-  font-family: "Lucida Console", Monaco, monospace;
-}
-
 img {
   display: block;
   margin: auto;
@@ -222,22 +218,27 @@ strong {
   font-weight: 600;
 }
 
-footer {
+body > footer {
   text-align: center;
 }
 
-footer ul li {
+body > footer ul li {
   display: inline-block;
   list-style: none;
   margin-right: 2.7em;
 }
 
-footer ul li:before {
+body > footer ul li:before {
   content: '';
 }
 
 footer {
   font-family: "Lucida Console", Monaco, monospace;
+}
+
+section > footer {
+  color: $color-greyfour;
+  font-size: 14px;
 }
 
 article aside {
