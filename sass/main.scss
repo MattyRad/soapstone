@@ -5,6 +5,8 @@ $color-greytwo: hsla(0,0%,85%,.80);
 $color-greythree: hsla(0,0%,70%,.80);
 $color-greyfour: hsla(0,0%,50%,.80);
 $color-orange: #d28445;
+$color-orange-mute1: #916d4f;
+$color-orange-mute2: #615042;
 $color-yellow: #e3c84e;
 
 $main-width: 44rem;
@@ -89,6 +91,36 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
 }
 
+.tx-projects {
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+  /*color: $color-orange;*/
+  font-size: 1.4em;
+  /*padding-top: 30px;*/
+  /*font-weight: 600;*/
+}
+
+.tx-guides {
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+  /*color: $color-orange-mute1;*/
+  font-size: 1.2em;
+  /*padding-top: 30px;*/
+  /*font-weight: 400;*/
+}
+
+.tx-tips {
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+  color: $color-orange-mute2;
+  font-size: 0.8em;
+  /*padding-top: 0.5em;*/
+  /*font-weight: 200;*/
+}
+
+article > time {
+  font-family: "Lucida Console", Monaco, monospace;
+  display: inline-block;
+  width: 15%;
+}
+
 h1 {
   color: $color-white;
   font-size: 1.75em;
@@ -129,6 +161,7 @@ h6 {
 }
 
 time {
+  font-family: "Lucida Console", Monaco, monospace;
   color: $color-greyfour;
   font-size: 14px;
 }
@@ -168,7 +201,7 @@ blockquote p:last-child {
   }
 }
 
-ul{
+ul {
   padding-left:1em;
 }
 
@@ -218,27 +251,22 @@ strong {
   font-weight: 600;
 }
 
-body > footer {
+footer {
   text-align: center;
 }
 
-body > footer ul li {
+footer ul li {
   display: inline-block;
   list-style: none;
   margin-right: 2.7em;
 }
 
-body > footer ul li:before {
+footer ul li:before {
   content: '';
 }
 
 footer {
   font-family: "Lucida Console", Monaco, monospace;
-}
-
-section > footer {
-  color: $color-greyfour;
-  font-size: 14px;
 }
 
 article aside {
