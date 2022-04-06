@@ -44,11 +44,13 @@
 
   <body>
     {% block header %}
-      <nav>
-        {% if config.extra.list_header %}
-          <h1>{{ config.extra.list_header }}</h1>
-        {% endif %}
-      </nav>
+      <header>
+        <nav>
+          {% if config.extra.list_header %}
+            <h1>{{ config.extra.list_header }}</h1>
+          {% endif %}
+        </nav>
+      </header>
     {% endblock header %}
 
     <main>
@@ -67,10 +69,13 @@
               {% endfor %}
             {% endif %}
           {% endfor %}
+          {% for page in main.pages %}
+            {% set_global pages = pages | concat(with=page) %}
+          {% endfor %}
 
           {% for page in pages | sort(attribute="date") | reverse %}
             {% if loop.first or year_index != page.year %}
-              <h2>{{ page.year }}</h2>
+              <h2 style="padding-bottom: 10px;">{{ page.year }}</h2>
               {% set_global year_index = page.year %}
             {% endif %}
 
@@ -84,31 +89,17 @@
               {% endfor %}
             {% endif %}
 
-            {% if categories is containing("projects") %}
-              {% set gravity = 2 %}
-            {% elif categories is containing("guides") %}
-              {% set gravity = 4 %}
-            {% elif categories is containing("tips") %}
-              {% set gravity = 6 %}
-            {% else %}
-              {% set gravity = 3 %}
-            {% endif %}
-
-            <h{{ gravity | safe }} class="{% if page.taxonomies %}{% for i, taxonomy in page.taxonomies %}{% for taxonomy_name in taxonomy %}tx-{{ taxonomy_name }}{% endfor %}{% endfor %}{% endif %}">
-              <a href="{{ page.path }}">{{ page.title }}</a>
-            </h{{ gravity | safe }}>
-            <footer>
-              <small>
-                <time>{{ page.date | date(format="%B %d, %Y") }}</time>
-                {% if page.taxonomies %}
-                  {% for taxonomy_type, taxonomy in page.taxonomies %}
-                      {% for taxonomy_name in taxonomy %}
-                        <a class="normal tx-{{ taxonomy_name }}" style="text-decoration: underline;" href="/categories/{{ taxonomy_name }}">{{ taxonomy_name }}</a>
-                      {% endfor %}
+            <article style="padding-top: 5px;">
+              <time datetime="{{ page.date }}">{{ page.date | date(format="%B %d") }}</time>
+              {# if page.taxonomies %}
+                {% for taxonomy_type, taxonomy in page.taxonomies %}
+                  {% for taxonomy_name in taxonomy %}
+                    <a class="normal tx-{{ taxonomy_name }}" style="text-decoration: underline;" href="/categories/{{ taxonomy_name }}">{{ taxonomy_name }}</a>
                   {% endfor %}
-                {% endif %}
-              </small>
-            </footer>
+                {% endfor %}
+              {% endif #}
+              <a class="{% if page.taxonomies %}{% for i, taxonomy in page.taxonomies %}{% for taxonomy_name in taxonomy %}tx-{{ taxonomy_name }}{% endfor %}{% endfor %}{% endif %}" href="{{ page.path }}">{{ page.title }}</a>
+            </article>
           {% endfor %}
           {#
             {% set categories = get_taxonomy(kind="categories") %}
