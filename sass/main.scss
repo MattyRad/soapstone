@@ -37,8 +37,12 @@ body > header > nav > ul {
   display: flex;
   align-items: center;
   list-style: none;
-  justify-content: space-evenly;
+  justify-content: flex-end;
   margin-bottom: 0;
+}
+
+body > header > nav > ul > li{
+  padding-left: 15px;
 }
 body > header > nav > ul > li:before {
   content: '/';
@@ -69,10 +73,6 @@ td {
 img {
   height: auto;
   max-width: 100%;
-}
-ul {
-  /*list-style: none;*/
-  padding-left: 0;
 }
 .homepage-list li {
   align-items: center;

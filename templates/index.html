@@ -5,6 +5,10 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
+    {% if config.description %}
+      <meta name="description" content="{{ config.description }}">
+    {% endif %}
+
     {% if config.extra.theme_color %}
       <meta name="theme-color" content="{{ config.extra.theme_color }}">
       <meta name="msapplication-navbutton-color" content="{{ config.extra.theme_color }}">
@@ -68,24 +72,33 @@
   <body>
     {% block header %}
       <header>
-        {% if config.title %}
-          <h1 style="margin-bottom: 0;">{{ config.title }}</h1>
-        {% endif %}
-        {% if config.description %}
-          <small style="margin-top: 0;">{{ config.description }}</small>
-        {% endif %}
+        {% block hero %}
+          {% if config.title %}
+            <h1 style="margin-bottom: 0;">{{ config.title }}</h1>
+          {% endif %}
+          {% if config.description %}
+            <small style="margin-top: 0;">{{ config.description }}</small>
+          {% endif %}
+        {% endblock %}
 
-          <nav>
-            <ul>
-              <li><a href="/">home</a></li>
-              {% if section.subsections %}
-                {% for subsection in section.subsections %}
-                  {% set subsection = get_section(path=subsection) %}
-                  <li><a href="{{ subsection.permalink }}">{{ subsection.title }}</a></li>
-                {% endfor %}
-              {% endif %}
-            </ul>
-          </nav>
+        <nav>
+          <ul>
+            <li><a href="/">home</a></li>
+            {% if section.subsections %}
+              {% for subsection in section.subsections %}
+                {% set subsection = get_section(path=subsection) %}
+                  {% if subsection.title %}
+                    <li><a href="{{ subsection.permalink }}">{{ subsection.title }}</a></li>
+                  {% endif %}
+              {% endfor %}
+            {% endif %}
+            {% if config.extra.header_paths %}
+              {% for text, link in config.extra.header_paths %}
+                <li><a href="{{ link }}">{{ text }}</a></li>
+              {% endfor %}
+            {% endif %}
+          </ul>
+        </nav>
       </header>
       <hr>
     {% endblock header %}
@@ -94,7 +107,7 @@
       {% block content %}
         {% for year, pages_by_year in section.pages | sort(attribute="date") | reverse | group_by(attribute="year") %}
           <h2>{{ year }}</h2>
-          <ul class="homepage-list">
+          <ul class="homepage-list" style="padding-left: 0;">
             {% for page in pages_by_year %}
               <li>
                 <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
@@ -174,7 +187,7 @@
         </nav>
 
         {% if config.extra.gravatar_img_src and config.extra.gravatar_href %}
-          <a href="{{ config.extra.gravatar_href }}" class="normal">
+          <a href="{{ config.extra.gravatar_href }}" class="normal" alt="gravatar">
             <img class="center-img" src="{{ config.extra.gravatar_img_src }}">
           </a>
         {% endif %}
