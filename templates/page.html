@@ -1,27 +1,57 @@
 {% extends "index.html" %}
 
-{% block title %}{{ page.title }} - {{ config.title }}{% endblock title %}
+{% block title %}
+  {{ page.title }} &middot; {{ config.title }}
+{% endblock title %}
+{% block description %}
+  {{ page.description | default(value=config.description) }}
+{% endblock description %}
+
+{% block ogtitle %}
+  {{ page.title }}
+{% endblock ogtitle %}
+
+{% block ogdesc %}
+  {{ page.description }}
+{% endblock ogdesc %}
+
+{% block ogurl %}
+  {{ page.permalink | safe }}
+{% endblock ogurl%}
+
+{% block ogimage -%}
+  {%- if page.extra.image -%}
+    {{ get_url(path=page.extra.image) | safe }}
+  {%- elif config.extra.ogimage -%}
+    {{ get_url(path=config.extra.ogimage) | safe }}
+  {%- endif -%}
+{%- endblock ogimage %}
 
 {% block header %}
-  <nav>
-    <a href="/">Posts</a>
-  </nav>
+  <header>
+    <nav style="text-align: right;">
+      <a href="/">Posts</a>
+    </nav>
+  </header>
 {% endblock header %}
 
 {% block content %}
   <article>
     <header>
-      <h1>{{ page.title }}</h1>
+      <h1 style="margin-bottom: 0;">{{ page.title }}</h1>
 
-      <time>
+      <p style="margin-top: 0;">
         {% if page.extra.updated_date %}
           Published on
         {% endif %}
-        {{ page.date | date(format="%B %d, %Y") }}
-      </time>
+        <time datetime="{{ page.date | date(format="%+") }}">{{ page.date | date(format="%B %d, %Y") }}</time>
+      </p>
 
       {% if page.extra.updated_date %}
-        <time>Updated on {{ page.extra.updated_date | date(format="%B %d, %Y") }}</time>
+        <p>
+          Updated on
+          <time datetime="{{ page.extra.updated_date | date(format="%+") }}">{{ page.extra.updated_date | date(format="%B %d, %Y") }}</time>
+        </p>
       {% endif %}
     </header>
 
