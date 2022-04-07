@@ -74,17 +74,39 @@
         {% if config.description %}
           <small style="margin-top: 0;">{{ config.description }}</small>
         {% endif %}
+
+          <nav>
+            <ul>
+              <li><a href="/">home</a></li>
+              {% if section.subsections %}
+                {% for subsection in section.subsections %}
+                  {% set subsection = get_section(path=subsection) %}
+                  <li><a href="{{ subsection.permalink }}">{{ subsection.title }}</a></li>
+                {% endfor %}
+              {% endif %}
+            </ul>
+          </nav>
       </header>
       <hr>
     {% endblock header %}
 
     <main>
       {% block content %}
-        {% set_global year_index = 0 %}
-        {% set_global pages = [] %}
-        {% set main = get_section(path="_index.md") %}
+        {% for year, pages_by_year in section.pages | sort(attribute="date") | reverse | group_by(attribute="year") %}
+          <h2>{{ year }}</h2>
+          <ul class="homepage-list">
+            {% for page in pages_by_year %}
+              <li>
+                <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
+                <time datetime="{{ page.date | date(format="%+") }}">{{ page.date | date(format="%B %d") }}</time>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endfor %}
 
-        {% for subsection in main.subsections %}
+        {# set main = get_section(path="_index.md") #}
+        {# set_global pages = [] #}
+        {# for subsection in main.subsections %}
           {% set subsection = get_section(path=subsection) %}
           {% if subsection.pages %}
             {% for page in subsection.pages %}
@@ -94,15 +116,17 @@
         {% endfor %}
         {% for page in main.pages %}
           {% set_global pages = pages | concat(with=page) %}
-        {% endfor %}
+        {% endfor #}
 
-        {% for page in pages | sort(attribute="date") | reverse %}
+        {# {% if page.taxonomies %}{% for i, taxonomy in page.taxonomies %}{% for taxonomy_name in taxonomy %}tx-{{ taxonomy_name }} {% endfor %}{% endfor %}{% endif %} #}
+        {# set_global year_index = 0 #}
+        {# for page in pages | sort(attribute="date") | reverse %}
           {% if loop.first or year_index != page.year %}
-            <h2 style="text-decoration: underline;">{{ page.year }}</h2>
+            <li style="text-decoration: underline;">{{ page.year }}</li>
             {% set_global year_index = page.year %}
           {% endif %}
 
-          {% set_global categories = [] %}
+          {# set_global categories = [] %}
           {% if page.taxonomies %}
             {% for taxonomy_type, taxonomy in page.taxonomies %}
                 {% for taxonomy_name in taxonomy %}
@@ -117,21 +141,9 @@
                 <a class="tx-{{ taxonomy_name }}" style="text-decoration: underline;" href="/categories/{{ taxonomy_name }}">{{ taxonomy_name }}</a>
               {% endfor %}
             {% endfor %}
-          {% endif #}
-          {#
-            {% set categories = get_taxonomy(kind="categories") %}
-            {% for term in categories.items %}
-              {{ term.name }}
-            {% endfor %}
-          #}
+          {% endif %}
+        {% endfor #}
 
-          <ul class="homepage-list">
-            <li>
-              <a class="{% if page.taxonomies %}{% for i, taxonomy in page.taxonomies %}{% for taxonomy_name in taxonomy %}tx-{{ taxonomy_name }}{% endfor %}{% endfor %}{% endif %}" href="{{ page.path }}" href="{{ page.permalink | safe }}">{{ page.title }}</a>
-              <time datetime="{{ page.date | date(format="%+") }}">{{ page.date | date(format="%B %d, %Y") }}</time>
-            </li>
-          </ul>
-        {% endfor %}
       {% endblock content %}
     </main>
 
@@ -141,11 +153,11 @@
         <nav>
           <ul>
             <li>
-              <a href="/">Home</a>
+              <a href="/">home</a>
             </li>
             {% if config.extra.github_link %}
               <li>
-                <a href="{{ config.extra.github_link }}">Github</a>
+                <a href="{{ config.extra.github_link }}">github</a>
               </li>
             {% endif %}
             {% if config.generate_rss %}
@@ -155,7 +167,7 @@
             {% endif %}
             {% if config.extra.about_link %}
               <li>
-                <a href="{{ config.extra.about_link }}" target="_blank">About</a>
+                <a href="{{ config.extra.about_link }}" target="_blank">about</a>
               </li>
             {% endif %}
           </ul>

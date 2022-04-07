@@ -26,12 +26,35 @@ body {
 }
 body > header {
   margin: auto;
-  max-width: 40rem;
+  max-width: 44rem;
+}
+body > footer {
+  margin: auto;
+  max-width: 44rem;
   padding: 0.8rem;
+}
+body > header > nav > ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  justify-content: space-evenly;
+  margin-bottom: 0;
+}
+body > header > nav > ul > li:before {
+  content: '/';
+}
+body > footer > nav > ul {
+  list-style: none;
+}
+body > footer {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  justify-content: space-evenly;
 }
 main {
   margin: auto;
-  max-width: 40rem;
+  max-width: 44rem;
   padding: 0.8rem;
 }
 pre {
@@ -47,18 +70,17 @@ img {
   height: auto;
   max-width: 100%;
 }
-.homepage-list {
-  list-style: none;
-  padding: 1rem 0;
+ul {
+  /*list-style: none;*/
+  padding-left: 0;
 }
 .homepage-list li {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-bottom: 10px;
 }
-@media (max-width: 40rem) {
+@media (max-width: 44rem) {
   .homepage-list li a {
     width: 100%;
   }
@@ -101,21 +123,9 @@ h6 {
   font-size: 1.1em;
 }
 
-.tx-projects {
-  font-size: 1.4em;
-}
-
-.tx-guides {
-  font-size: 1.2em;
-}
-
-.tx-tips {
-  font-size: 0.8em;
-}
-
 time {
   font-family: "Lucida Console", Monaco, monospace;
-  font-size: 90%;
+  font-size: 14px;
 }
 
 img {
@@ -151,24 +161,6 @@ blockquote p:last-child {
     padding-right: 5rem;
     padding-left: 1.25rem;
   }
-}
-
-footer {
-  text-align: center;
-}
-
-footer ul li {
-  display: inline-block;
-  list-style: none;
-  margin-right: 2.7em;
-}
-
-footer ul li:before {
-  content: '';
-}
-
-footer {
-  font-family: "Lucida Console", Monaco, monospace;
 }
 
 article aside {
