@@ -26,6 +26,29 @@
 
     <style>{{ load_data(path="public/main.css") | safe }}</style>
 
+    {% block seo -%}
+      <meta property="og:site_name" content="{% block ogsitename %}{{config.title}}{% endblock ogsitename %}">
+      {% if config.extra.author -%}
+        <meta name="author" content="{{ config.extra.author }}" />
+      {%- endif %}
+      <meta property="og:title" content="{% block ogtitle %}{{config.title}}{% endblock ogtitle %}">
+      <meta property="og:description" content="{% block ogdesc %}{{config.description}}{% endblock ogdesc %}">
+      <meta property="og:url" content="{% block ogurl %}{{config.base_url | safe }}{% endblock ogurl %}">
+      <meta property="og:image" content="{% block ogimage %}{% if config.extra.ogimage %}{{ get_url(path=config.extra.ogimage) | safe }}{% endif %}{% endblock ogimage %}">
+
+      {% if page.date -%}
+        <meta property="og:type" content="article" />
+        <meta property="article:published_time" content="{{ page.date | date(format="%+") }}" />
+      {%- endif %}
+
+      {% if page.earlier -%}
+        <link rel="prev" href="{{ page.earlier.permalink | safe }}" />
+      {%- endif %}
+      {% if page.later -%}
+        <link rel="next" href="{{ page.later.permalink | safe }}" />
+      {%- endif %}
+    {%- endblock seo -%}
+
     {% if config.generate_rss %}
       <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path="rss.xml", trailing_slash=false) }}">
     {% endif %}
@@ -45,75 +68,77 @@
   <body>
     {% block header %}
       <header>
-        <nav>
-          {% if config.extra.list_header %}
-            <h1>{{ config.extra.list_header }}</h1>
-          {% endif %}
-        </nav>
+        {% if config.title %}
+          <h1 style="margin-bottom: 0;">{{ config.title }}</h1>
+        {% endif %}
+        {% if config.description %}
+          <small style="margin-top: 0;">{{ config.description }}</small>
+        {% endif %}
       </header>
+      <hr>
     {% endblock header %}
 
     <main>
-      <br>
-      <section>
-        {% block content %}
-          {% set_global year_index = 0 %}
-          {% set_global pages = [] %}
-          {% set main = get_section(path="_index.md") %}
+      {% block content %}
+        {% set_global year_index = 0 %}
+        {% set_global pages = [] %}
+        {% set main = get_section(path="_index.md") %}
 
-          {% for subsection in main.subsections %}
-            {% set subsection = get_section(path=subsection) %}
-            {% if subsection.pages %}
-              {% for page in subsection.pages %}
-                {% set_global pages = pages | concat(with=page) %}
-              {% endfor %}
-            {% endif %}
-          {% endfor %}
-          {% for page in main.pages %}
-            {% set_global pages = pages | concat(with=page) %}
-          {% endfor %}
+        {% for subsection in main.subsections %}
+          {% set subsection = get_section(path=subsection) %}
+          {% if subsection.pages %}
+            {% for page in subsection.pages %}
+              {% set_global pages = pages | concat(with=page) %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+        {% for page in main.pages %}
+          {% set_global pages = pages | concat(with=page) %}
+        {% endfor %}
 
-          {% for page in pages | sort(attribute="date") | reverse %}
-            {% if loop.first or year_index != page.year %}
-              <h2 style="padding-bottom: 10px;">{{ page.year }}</h2>
-              {% set_global year_index = page.year %}
-            {% endif %}
+        {% for page in pages | sort(attribute="date") | reverse %}
+          {% if loop.first or year_index != page.year %}
+            <h2 style="text-decoration: underline;">{{ page.year }}</h2>
+            {% set_global year_index = page.year %}
+          {% endif %}
 
-
-            {% set_global categories = [] %}
-            {% if page.taxonomies %}
-              {% for taxonomy_type, taxonomy in page.taxonomies %}
-                  {% for taxonomy_name in taxonomy %}
-                    {% set_global categories = categories | concat(with=taxonomy_name) %}
-                  {% endfor %}
-              {% endfor %}
-            {% endif %}
-
-            <article style="padding-top: 5px;">
-              <time datetime="{{ page.date }}">{{ page.date | date(format="%B %d") }}</time>
-              {# if page.taxonomies %}
-                {% for taxonomy_type, taxonomy in page.taxonomies %}
-                  {% for taxonomy_name in taxonomy %}
-                    <a class="normal tx-{{ taxonomy_name }}" style="text-decoration: underline;" href="/categories/{{ taxonomy_name }}">{{ taxonomy_name }}</a>
-                  {% endfor %}
+          {% set_global categories = [] %}
+          {% if page.taxonomies %}
+            {% for taxonomy_type, taxonomy in page.taxonomies %}
+                {% for taxonomy_name in taxonomy %}
+                  {% set_global categories = categories | concat(with=taxonomy_name) %}
                 {% endfor %}
-              {% endif #}
-              <a class="{% if page.taxonomies %}{% for i, taxonomy in page.taxonomies %}{% for taxonomy_name in taxonomy %}tx-{{ taxonomy_name }}{% endfor %}{% endfor %}{% endif %}" href="{{ page.path }}">{{ page.title }}</a>
-            </article>
-          {% endfor %}
+            {% endfor %}
+          {% endif %}
+
+          {# if page.taxonomies %}
+            {% for taxonomy_type, taxonomy in page.taxonomies %}
+              {% for taxonomy_name in taxonomy %}
+                <a class="tx-{{ taxonomy_name }}" style="text-decoration: underline;" href="/categories/{{ taxonomy_name }}">{{ taxonomy_name }}</a>
+              {% endfor %}
+            {% endfor %}
+          {% endif #}
           {#
             {% set categories = get_taxonomy(kind="categories") %}
             {% for term in categories.items %}
               {{ term.name }}
             {% endfor %}
           #}
-        {% endblock content %}
-      </section>
+
+          <ul class="homepage-list">
+            <li>
+              <a class="{% if page.taxonomies %}{% for i, taxonomy in page.taxonomies %}{% for taxonomy_name in taxonomy %}tx-{{ taxonomy_name }}{% endfor %}{% endfor %}{% endif %}" href="{{ page.path }}" href="{{ page.permalink | safe }}">{{ page.title }}</a>
+              <time datetime="{{ page.date | date(format="%+") }}">{{ page.date | date(format="%B %d, %Y") }}</time>
+            </li>
+          </ul>
+        {% endfor %}
+      {% endblock content %}
     </main>
 
     {% block footer %}
+      <hr>
       <footer>
-        <small>
+        <nav>
           <ul>
             <li>
               <a href="/">Home</a>
@@ -134,7 +159,7 @@
               </li>
             {% endif %}
           </ul>
-        </small>
+        </nav>
 
         {% if config.extra.gravatar_img_src and config.extra.gravatar_href %}
           <a href="{{ config.extra.gravatar_href }}" class="normal">

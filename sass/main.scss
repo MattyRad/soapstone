@@ -8,162 +8,114 @@ $color-orange: #d28445;
 $color-orange-mute1: #916d4f;
 $color-orange-mute2: #615042;
 $color-yellow: #e3c84e;
+$color-blue: #1400ff;
+$animated-underline-color: #1400ff;
+$animated-underline-color-dark: $color-orange;
+$color-background: #fffaf7;
+$color-background-dark: #1a1c20;
+$color-text: #2d2d2d;
+$color-text-dark: $color-greyone;
+$color-link-visited-red: #993f3f;
 
-$main-width: 44rem;
-
+html,
 body {
-  background-color: #000;
-  margin: 0 auto;
-  color: $color-greytwo;
   text-rendering: optimizeLegibility;
-  /* not sure if these below help, feel free to remove */
-  font-style: normal;
-  letter-spacing: normal;
-  font-stretch: 100%;
-  vertical-align: baseline;
+  background: $color-background;
+  color: $color-text;
+  font: 16px/1.5 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
 }
-
-@media (min-width: 801px) {
-  body {
-    font-size: 21px;
-    line-height: 1.5em;
-    font-family: Georgia,serif;
-  }
+body > header {
+  margin: auto;
+  max-width: 40rem;
+  padding: 0.8rem;
 }
-@media (max-width: 800px) {
-  body {
-    font-size: 18px;
-    line-height: 1.6em;
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu;
-    font-weight: 300;
+main {
+  margin: auto;
+  max-width: 40rem;
+  padding: 0.8rem;
+}
+pre {
+  background: white;
+  overflow: scroll;
+  padding: 1rem;
+}
+td {
+  border: 1px solid #2d2d2d;
+  padding: 10px;
+}
+img {
+  height: auto;
+  max-width: 100%;
+}
+.homepage-list {
+  list-style: none;
+  padding: 1rem 0;
+}
+.homepage-list li {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+@media (max-width: 40rem) {
+  .homepage-list li a {
+    width: 100%;
   }
 }
 
 nav {
   font-family: "Lucida Console", Monaco, monospace;
-  max-width: $main-width;
-  margin: 0 auto;
-  text-align: right;
-  font-size: 0.8em;
-  padding: 10px;
-}
-
-nav h1 {
-  text-align: center;
-}
-
-hr {
-  padding: 0;
-  margin: 0;
-  border: 0;
-  height: 1px;
-  background-image: linear-gradient(to right, rgba(111, 111, 111, 0), rgba(111, 111, 111, 0.75), rgba(111, 111, 111, 0));
-}
-
-p {
-  padding-top: 15px;
-  padding-bottom: 5px;
-  margin: 0;
-}
-
-main {
-  background-color: #1a1c20;
-}
-
-main section {
-  max-width: $main-width;
-  margin-left:  auto;
-  margin-right: auto;
-  padding-bottom: 20px;
-  padding-left: 1em;
-  padding-right: 1em;
-}
-
-main header {
-  padding-top: 20px;
-  padding-bottom: 20px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 0;
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
-  line-height: 1.1;
-  font-weight: 300;
-}
-
-.tx-projects {
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
-  /*color: $color-orange;*/
-  font-size: 1.4em;
-  /*padding-top: 30px;*/
-  /*font-weight: 600;*/
-}
-
-.tx-guides {
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
-  /*color: $color-orange-mute1;*/
-  font-size: 1.2em;
-  /*padding-top: 30px;*/
-  /*font-weight: 400;*/
-}
-
-.tx-tips {
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
-  color: $color-orange-mute2;
-  font-size: 0.8em;
-  /*padding-top: 0.5em;*/
-  /*font-weight: 200;*/
-}
-
-article > time {
-  font-family: "Lucida Console", Monaco, monospace;
-  display: inline-block;
-  width: 15%;
+  /*line-height: 1.1;*/
 }
 
 h1 {
-  color: $color-white;
   font-size: 1.75em;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 h2 {
-  color: $color-white;
-  font-size: 1.6em;
-  padding-top: 30px;
+  font-size: 1.5em;
   text-decoration: underline;
   font-weight: 400;
 }
 
 h3 {
-  color: $color-greyzero;
   font-size: 1.4em;
-  padding-top: 30px;
   font-weight: 400;
 }
 
 h4 {
-  color: $color-greyone;
   font-size: 1.3em;
-  padding-top: 30px;
 }
 
 h5 {
-  color: $color-greyone;
   font-size: 1.2em;
-  padding-top: 0.5em;
 }
 
 h6 {
-  color: $color-greythree;
   font-size: 1.1em;
-  padding-top: 0.5em;
+}
+
+.tx-projects {
+  font-size: 1.4em;
+}
+
+.tx-guides {
+  font-size: 1.2em;
+}
+
+.tx-tips {
+  font-size: 0.8em;
 }
 
 time {
   font-family: "Lucida Console", Monaco, monospace;
-  color: $color-greyfour;
-  font-size: 14px;
+  font-size: 90%;
 }
 
 img {
@@ -199,56 +151,6 @@ blockquote p:last-child {
     padding-right: 5rem;
     padding-left: 1.25rem;
   }
-}
-
-ul {
-  padding-left:1em;
-}
-
-ul ul{
-  padding-left:1.2em;
-}
-
-ul ul ul{
-  padding-left:1.3em;
-}
-
-ul {
-  font-size: 18px;
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu;
-  padding-bottom: 5px;
-}
-
-li {
-  color: $color-greyone;
-  text-indent: 5px;
-}
-
-li li {
-  color: $color-greythree;
-}
-
-/*https://css-tricks.com/finally-it-will-be-easy-to-change-the-color-of-list-bullets/*/
-li::marker {
-  content: '\21C0';
-  color: $color-yellow;
-}
-
-li li::marker {
-  color: darken($color-yellow, 20%);
-}
-
-li li li::marker {
-  color: darken($color-yellow, 30%);
-}
-
-ul ul {
-  font-size: 16px;
-}
-
-strong {
-  color: $color-greyone;
-  font-weight: 600;
 }
 
 footer {
@@ -300,7 +202,7 @@ article aside figure figcaption {
 /**
  * Code segments
  */
-code {
+/*code {
   padding: .25em .5em;
   color: #e94e4e;
   background-color: #151515;
@@ -332,12 +234,11 @@ pre code {
 }
 .highlight pre {
   margin-bottom: 0;
-}
+}*/
 
 a {
   display: inline-block;
   text-decoration: none;
-  color: $color-orange;
   position: relative;
 }
 /**
@@ -352,14 +253,14 @@ a {
     display: block;
     /*margin-top: 5px;*/
     right: 0;
-    background: #f4bf75;
+    background: $animated-underline-color;
     transition: width .3s ease;
     -webkit-transition: width .3s ease;
   }
   a:hover:after {
     width: 100%;
     left: 0;
-    background: #f4bf75;
+    background: $animated-underline-color;
   }
 }
 /* NO - Underline From Left */
@@ -375,4 +276,23 @@ a.normal:before {
 a.normal:after {
   width: 0%;
   transition: unset;
+}
+
+@media (prefers-color-scheme: dark) {
+  html,
+  body {
+    background: $color-background-dark;
+    color: $color-text-dark;
+  }
+  a {
+    color: $color-orange;
+  }
+  @media (min-width: 800px) {
+    a:after {
+      background: $animated-underline-color-dark;
+    }
+    a:hover:after {
+      background: $animated-underline-color-dark;
+    }
+  }
 }
