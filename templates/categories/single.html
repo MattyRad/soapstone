@@ -1,26 +1,23 @@
 {% extends "index.html" %}
 
-{% block title %}{{ 'todo' }} - {{ config.title }}{% endblock title %}
-
-{% block header %}
-  <header>
-    <div class="right">
-      <small>
-        <a href="/">Posts</a>
-      </small>
-    </div>
-    <hr>
-  </header>
-{% endblock header %}
+{% block title %}{{ term.name | capitalize }} &middot; {{ config.title }}{% endblock title %}
+{% block description %}
+  {{ config.description }}
+{% endblock description %}
 
 {% block content %}
+  {% block hero %}
+  {% endblock %}
+
   <h1>{{ term.name | capitalize }}</h1>
-  {% for page in term.pages | sort(attribute="date") | reverse %}
-    <li>
-      {% if page.date %}
-        {{ page.date | date(format="%B %d, %Y") }} -
-      {% endif %}
-      <a href="{{ page.permalink }}">{{ page.title }}</a>
-    </li>
-  {% endfor %}
+  <ul class="homepage-list" style="padding-left: 0;">
+    {% for page in term.pages | sort(attribute="date") | reverse %}
+      <li>
+        <a href="{{ page.permalink }}">{{ page.title }}</a>
+        {% if page.date %}
+          <time datetime="{{ page.date | date(format="%+") }}">{{ page.date | date(format="%B %d, %Y") }}</time>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
 {% endblock content %}

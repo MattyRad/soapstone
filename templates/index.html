@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
     {% if config.description %}
-      <meta name="description" content="{{ config.description }}">
+      <meta name="description" content="{{ config.description | striptags }}">
     {% endif %}
 
     {% if config.extra.theme_color %}
@@ -77,7 +77,7 @@
             <h1 style="margin-bottom: 0;">{{ config.title }}</h1>
           {% endif %}
           {% if config.description %}
-            <small style="margin-top: 0;">{{ config.description }}</small>
+            <small style="margin-top: 0;">{{ config.description | safe }}</small>
           {% endif %}
         {% endblock %}
 
@@ -175,7 +175,7 @@
             {% endif %}
             {% if config.generate_rss %}
               <li>
-                <a href="/rss.xml">RSS</a>
+                <a href="/rss.xml">rss</a>
               </li>
             {% endif %}
             {% if config.extra.about_link %}
@@ -188,7 +188,7 @@
 
         {% if config.extra.gravatar_img_src and config.extra.gravatar_href %}
           <a href="{{ config.extra.gravatar_href }}" class="normal" alt="gravatar">
-            <img class="center-img" src="{{ config.extra.gravatar_img_src }}">
+            <img class="center-img" src="{{ config.extra.gravatar_img_src }}" loading="lazy">
           </a>
         {% endif %}
 

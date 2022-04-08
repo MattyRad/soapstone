@@ -27,11 +27,14 @@ body {
 body > header {
   margin: auto;
   max-width: 44rem;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
 }
 body > footer {
   margin: auto;
   max-width: 44rem;
-  padding: 0.8rem;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
 }
 body > header > nav > ul {
   display: flex;
@@ -227,6 +230,25 @@ pre code {
 .highlight pre {
   margin-bottom: 0;
 }*/
+code {
+  padding: .25em .5em;
+  color: #e94e4e;
+  background-color: #151515;
+  border-radius: 3px;
+  font-size: 75%;
+}
+pre {
+  border-radius: 10px;
+  display: block;
+  overflow-x: auto;
+  overflow-y: auto;
+  background-color: #151515;
+  scrollbar-width: thin;
+  scrollbar-color: $color-greyfour black;
+}
+pre code {
+  padding: 0;
+}
 
 a {
   display: inline-block;

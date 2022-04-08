@@ -1,19 +1,16 @@
 {% extends "index.html" %}
 
-{% block title %}{{ 'todo' }} - {{ config.title }}{% endblock title %}
-
-{% block header %}
-  <header>
-    <div class="right">
-      <small>
-        <a href="/">Posts</a>
-      </small>
-    </div>
-    <hr>
-  </header>
-{% endblock header %}
+{% block title %}
+  {{ taxonomy.name | capitalize }} &middot; {{ config.title }}
+{% endblock title %}
+{% block description %}
+  {{ config.description }}
+{% endblock description %}
 
 {% block content %}
+  {% block hero %}
+  {% endblock %}
+
   <h1>{{ taxonomy.name | capitalize }}</h1>
   <ul>
     {% for page in terms %}
