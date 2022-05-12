@@ -56,7 +56,7 @@
       <aside>
         <figure>
           {% if (config.extra.signature_img_src) %}
-            <img src="{{ config.extra.signature_img_src }}" alt="soapstone" loading="lazy">
+            <img src="{{ config.extra.signature_img_src }}" alt="{% if (config.extra.signature_text) %}{{ config.extra.signature_text }}{% endif %}" loading="lazy">
             {% if (config.extra.signature_text) %}
               <figcaption>{{ config.extra.signature_text }}</figcaption>
             {% endif %}
