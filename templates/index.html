@@ -109,7 +109,7 @@
           <h2>{{ year }}</h2>
           <ul class="homepage-list" style="padding-left: 0;">
             {% for page in pages_by_year %}
-              <li>
+              <li style="padding-bottom: 10px;">
                 <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
                 <time datetime="{{ page.date | date(format="%+") }}">{{ page.date | date(format="%B %d") }}</time>
               </li>

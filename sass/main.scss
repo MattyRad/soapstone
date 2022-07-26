@@ -22,7 +22,7 @@ body {
   text-rendering: optimizeLegibility;
   background: $color-background;
   color: $color-text;
-  font: 16px/1.5 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+  font: 16px/1.5 -apple-system,BlinkMacSystemFont,avenir next,avenir,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,helvetica,roboto,noto,arial,sans-serif;
 }
 body > header {
   margin: auto;
@@ -90,11 +90,11 @@ img {
 }
 
 nav {
-  font-family: "Lucida Console", Monaco, monospace;
+  font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+  font: 16px/1.5 -apple-system,BlinkMacSystemFont,avenir next,avenir,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,helvetica,roboto,noto,arial,sans-serif;
   /*line-height: 1.1;*/
 }
 
@@ -144,13 +144,12 @@ img {
 }
 
 blockquote {
-  font-size: 0.75em;
   font-style: italic;
-  line-height: 1.1;
+  line-height: 1.3;
   font-family: "Lucida Console", Monaco, monospace;
   padding: .5rem 1rem;
   margin: .8rem 0;
-  color: $color-greyfour;
+  opacity: 60%;
   border-left: .25rem solid $color-greyfour;
 }
 blockquote strong {
@@ -199,8 +198,8 @@ article aside figure figcaption {
  */
 /*code {
   padding: .25em .5em;
-  color: #e94e4e;
-  background-color: #151515;
+  color: #fff;
+  background-color: #555;
   border-radius: 3px;
   font-size: 75%;
 }
@@ -212,7 +211,7 @@ pre {
   padding: 1rem;
   line-height: 1.3;
   overflow-x: auto;
-  background-color: #151515;
+  background-color: #555;
   font-size: 80%;
   scrollbar-width: thin;
   scrollbar-color: $color-greyfour black;
@@ -231,9 +230,9 @@ pre code {
   margin-bottom: 0;
 }*/
 code {
-  padding: .25em .5em;
-  color: #e94e4e;
-  background-color: #151515;
+  padding: .1em .2em;
+  color: #fff;
+  background-color: #555;
   border-radius: 3px;
   font-size: 75%;
 }
@@ -242,7 +241,7 @@ pre {
   display: block;
   overflow-x: auto;
   overflow-y: auto;
-  background-color: #151515;
+  background-color: #555;
   scrollbar-width: thin;
   scrollbar-color: $color-greyfour black;
 }
